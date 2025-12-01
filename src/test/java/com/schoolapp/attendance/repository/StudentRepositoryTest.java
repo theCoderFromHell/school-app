@@ -21,7 +21,7 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should save and retrieve student")
     void testSaveAndRetrieveStudent() {
-        Student student = new Student(null, "John Doe", "S001", "john@example.com");
+        Student student = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         Student saved = studentRepository.save(student);
 
         assertNotNull(saved.getId());
@@ -33,7 +33,7 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should find student by roll number")
     void testFindByRollNumber() {
-        Student student = new Student(null, "John Doe", "S001", "john@example.com");
+        Student student = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         studentRepository.save(student);
 
         Student result = studentRepository.findByRollNumber("S001");
@@ -54,7 +54,7 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should find student by ID")
     void testFindById() {
-        Student student = new Student(null, "John Doe", "S001", "john@example.com");
+        Student student = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         Student saved = studentRepository.save(student);
 
         Optional<Student> result = studentRepository.findById(saved.getId());
@@ -74,8 +74,8 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should get all students")
     void testFindAll() {
-        Student student1 = new Student(null, "John Doe", "S001", "john@example.com");
-        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com");
+        Student student1 = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
+        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null);
         studentRepository.save(student1);
         studentRepository.save(student2);
 
@@ -95,7 +95,7 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should delete student")
     void testDeleteStudent() {
-        Student student = new Student(null, "John Doe", "S001", "john@example.com");
+        Student student = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         Student saved = studentRepository.save(student);
         Long savedId = saved.getId();
 
@@ -108,7 +108,7 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should update student information")
     void testUpdateStudent() {
-        Student student = new Student(null, "John Doe", "S001", "john@example.com");
+        Student student = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         Student saved = studentRepository.save(student);
 
         saved.setName("Jane Doe");
@@ -122,8 +122,8 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should handle unique roll number constraint")
     void testUniqueRollNumberConstraint() {
-        Student student1 = new Student(null, "John Doe", "S001", "john@example.com");
-        Student student2 = new Student(null, "Jane Smith", "S001", "jane@example.com");
+        Student student1 = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
+        Student student2 = new Student(null, "Jane Smith", "S001", "jane@example.com", null, "9876543210", "456 Oak St", null);
         studentRepository.save(student1);
 
         assertThrows(Exception.class, () -> {
@@ -135,9 +135,9 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should handle multiple students with different roll numbers")
     void testMultipleStudentsDifferentRollNumbers() {
-        Student student1 = new Student(null, "John Doe", "S001", "john@example.com");
-        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com");
-        Student student3 = new Student(null, "Bob Johnson", "S003", "bob@example.com");
+        Student student1 = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
+        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null);
+        Student student3 = new Student(null, "Bob Johnson", "S003", "bob@example.com", null, "5555555555", "789 Elm St", null);
         studentRepository.save(student1);
         studentRepository.save(student2);
         studentRepository.save(student3);
@@ -150,7 +150,7 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should handle student with null email")
     void testStudentWithNullEmail() {
-        Student student = new Student(null, "John Doe", "S001", null);
+        Student student = new Student(null, "John Doe", "S001", null, null, "1234567890", "123 Main St", null);
         Student saved = studentRepository.save(student);
 
         assertNotNull(saved.getId());
@@ -160,7 +160,7 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should handle student with special characters in name")
     void testStudentWithSpecialCharactersInName() {
-        Student student = new Student(null, "John O'Doe", "S001", "john@example.com");
+        Student student = new Student(null, "John O'Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         Student saved = studentRepository.save(student);
 
         assertEquals("John O'Doe", saved.getName());
@@ -169,8 +169,8 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should count students")
     void testCountStudents() {
-        Student student1 = new Student(null, "John Doe", "S001", "john@example.com");
-        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com");
+        Student student1 = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
+        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null);
         studentRepository.save(student1);
         studentRepository.save(student2);
 
@@ -182,7 +182,7 @@ public class StudentRepositoryTest {
     @Test
     @DisplayName("Should check if student exists by ID")
     void testExistsById() {
-        Student student = new Student(null, "John Doe", "S001", "john@example.com");
+        Student student = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         Student saved = studentRepository.save(student);
 
         assertTrue(studentRepository.existsById(saved.getId()));

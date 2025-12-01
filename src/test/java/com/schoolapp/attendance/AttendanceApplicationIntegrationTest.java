@@ -43,7 +43,7 @@ public class AttendanceApplicationIntegrationTest {
     @DisplayName("Should create student and mark attendance")
     void testCreateStudentAndMarkAttendance() {
         // Create student
-        Student student = new Student(null, "John Doe", "S001", "john@example.com");
+        Student student = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         Student savedStudent = studentService.addStudent(student);
 
         assertNotNull(savedStudent.getId());
@@ -62,7 +62,7 @@ public class AttendanceApplicationIntegrationTest {
     @DisplayName("Should retrieve student and their attendance")
     void testRetrieveStudentAndAttendance() {
         // Create student
-        Student student = new Student(null, "John Doe", "S001", "john@example.com");
+        Student student = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         Student savedStudent = studentService.addStudent(student);
 
         // Mark attendance
@@ -81,10 +81,10 @@ public class AttendanceApplicationIntegrationTest {
     void testGetAttendanceByDate() {
         // Create students
         Student student1 = studentService.addStudent(
-                new Student(null, "John Doe", "S001", "john@example.com")
+                new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null)
         );
         Student student2 = studentService.addStudent(
-                new Student(null, "Jane Smith", "S002", "jane@example.com")
+                new Student(null, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null)
         );
 
         // Mark attendance
@@ -103,7 +103,7 @@ public class AttendanceApplicationIntegrationTest {
     void testUpdateAttendanceStatus() {
         // Create student
         Student student = studentService.addStudent(
-                new Student(null, "John Doe", "S001", "john@example.com")
+                new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null)
         );
 
         // Mark attendance as absent
@@ -125,13 +125,13 @@ public class AttendanceApplicationIntegrationTest {
     void testMultipleStudentsWithAttendance() {
         // Create multiple students
         Student student1 = studentService.addStudent(
-                new Student(null, "John Doe", "S001", "john@example.com")
+                new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null)
         );
         Student student2 = studentService.addStudent(
-                new Student(null, "Jane Smith", "S002", "jane@example.com")
+                new Student(null, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null)
         );
         Student student3 = studentService.addStudent(
-                new Student(null, "Bob Johnson", "S003", "bob@example.com")
+                new Student(null, "Bob Johnson", "S003", "bob@example.com", null, "5555555555", "789 Elm St", null)
         );
 
         // Get all students
@@ -154,7 +154,7 @@ public class AttendanceApplicationIntegrationTest {
     void testMultipleDatesForSameStudent() {
         // Create student
         Student student = studentService.addStudent(
-                new Student(null, "John Doe", "S001", "john@example.com")
+                new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null)
         );
 
         // Mark attendance for multiple dates
@@ -175,7 +175,7 @@ public class AttendanceApplicationIntegrationTest {
     @DisplayName("Should retrieve student by roll number")
     void testGetStudentByRollNumber() {
         // Create student
-        Student student = new Student(null, "John Doe", "S001", "john@example.com");
+        Student student = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         studentService.addStudent(student);
 
         // Retrieve by roll number
@@ -191,10 +191,10 @@ public class AttendanceApplicationIntegrationTest {
     void testComplexScenario() {
         // Create students
         Student student1 = studentService.addStudent(
-                new Student(null, "John Doe", "S001", "john@example.com")
+                new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null)
         );
         Student student2 = studentService.addStudent(
-                new Student(null, "Jane Smith", "S002", "jane@example.com")
+                new Student(null, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null)
         );
 
         // Mark attendance for multiple dates

@@ -40,7 +40,7 @@ public class AttendanceServiceTest {
 
     @BeforeEach
     void setUp() {
-        testStudent = new Student(1L, "John Doe", "S001", "john@example.com");
+        testStudent = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         testDate = LocalDate.of(2025, 11, 30);
         testAttendance = new Attendance(1L, testStudent, testDate, Attendance.Status.PRESENT);
     }
@@ -92,7 +92,7 @@ public class AttendanceServiceTest {
     void testGetAttendanceByDate() {
         List<Attendance> attendanceList = Arrays.asList(
                 new Attendance(1L, testStudent, testDate, Attendance.Status.PRESENT),
-                new Attendance(2L, new Student(2L, "Jane Smith", "S002", "jane@example.com"),
+                new Attendance(2L, new Student(2L, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null),
                         testDate, Attendance.Status.ABSENT)
         );
         when(attendanceRepository.findByDate(testDate)).thenReturn(attendanceList);

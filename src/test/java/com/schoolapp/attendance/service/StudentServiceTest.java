@@ -31,7 +31,7 @@ public class StudentServiceTest {
 
     @BeforeEach
     void setUp() {
-        testStudent = new Student(1L, "John Doe", "S001", "john@example.com");
+        testStudent = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
     }
 
     @Test
@@ -51,8 +51,8 @@ public class StudentServiceTest {
     @DisplayName("Should return all students")
     void testGetAllStudents() {
         List<Student> students = Arrays.asList(
-                new Student(1L, "John Doe", "S001", "john@example.com"),
-                new Student(2L, "Jane Smith", "S002", "jane@example.com")
+                new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null),
+                new Student(2L, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null)
         );
         when(studentRepository.findAll()).thenReturn(students);
 
@@ -114,7 +114,11 @@ public class StudentServiceTest {
                 null,
                 "Complete Student",
                 "S010",
-                "complete@example.com"
+                "complete@example.com",
+                null,
+                "5555555555",
+                "789 Elm St",
+                null
         );
         when(studentRepository.save(studentWithAllFields)).thenReturn(testStudent);
 
@@ -128,8 +132,8 @@ public class StudentServiceTest {
     @DisplayName("Should handle multiple students with same email")
     void testMultipleStudentsDifferentEmails() {
         List<Student> students = Arrays.asList(
-                new Student(1L, "John Doe", "S001", "john@example.com"),
-                new Student(2L, "John Duplicate", "S002", "john2@example.com")
+                new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null),
+                new Student(2L, "John Duplicate", "S002", "john2@example.com", null, "5555555555", "789 Elm St", null)
         );
         when(studentRepository.findAll()).thenReturn(students);
 
@@ -143,7 +147,7 @@ public class StudentServiceTest {
     @Test
     @DisplayName("Should verify repository interaction for add student")
     void testAddStudentRepositoryInteraction() {
-        Student newStudent = new Student(null, "New Student", "S999", "new@example.com");
+        Student newStudent = new Student(null, "New Student", "S999", "new@example.com", null, "9999999999", "999 Pine St", null);
         when(studentRepository.save(any(Student.class))).thenReturn(newStudent);
 
         studentService.addStudent(newStudent);

@@ -44,7 +44,7 @@ public class AttendanceControllerTest {
     @BeforeEach
     void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(attendanceController).build();
-        testStudent = new Student(1L, "John Doe", "S001", "john@example.com");
+        testStudent = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         testDate = LocalDate.of(2025, 11, 30);
         testAttendance = new Attendance(1L, testStudent, testDate, Attendance.Status.PRESENT);
     }
@@ -54,7 +54,7 @@ public class AttendanceControllerTest {
     void testGetAttendanceByDate() throws Exception {
         List<Attendance> attendanceList = Arrays.asList(
                 new Attendance(1L, testStudent, testDate, Attendance.Status.PRESENT),
-                new Attendance(2L, new Student(2L, "Jane Smith", "S002", "jane@example.com"),
+                new Attendance(2L, new Student(2L, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null),
                         testDate, Attendance.Status.ABSENT)
         );
         when(attendanceService.getAttendanceByDate(testDate)).thenReturn(attendanceList);
@@ -124,11 +124,11 @@ public class AttendanceControllerTest {
     @DisplayName("Should handle multiple attendance records for different students on same date")
     void testGetAttendanceByDateMultiple() throws Exception {
         List<Attendance> attendanceList = Arrays.asList(
-                new Attendance(1L, new Student(1L, "John Doe", "S001", "john@example.com"),
+                new Attendance(1L, new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null),
                         testDate, Attendance.Status.PRESENT),
-                new Attendance(2L, new Student(2L, "Jane Smith", "S002", "jane@example.com"),
+                new Attendance(2L, new Student(2L, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null),
                         testDate, Attendance.Status.ABSENT),
-                new Attendance(3L, new Student(3L, "Bob Johnson", "S003", "bob@example.com"),
+                new Attendance(3L, new Student(3L, "Bob Johnson", "S003", "bob@example.com", null, "5555555555", "789 Elm St", null),
                         testDate, Attendance.Status.LATE)
         );
         when(attendanceService.getAttendanceByDate(testDate)).thenReturn(attendanceList);

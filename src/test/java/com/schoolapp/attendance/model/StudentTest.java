@@ -11,7 +11,7 @@ public class StudentTest {
     @Test
     @DisplayName("Should create student with all fields")
     public void testStudentCreationWithAllFields() {
-        Student student = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
 
         assertEquals(1L, student.getId());
         assertEquals("John Doe", student.getName());
@@ -48,7 +48,7 @@ public class StudentTest {
     @Test
     @DisplayName("Should handle null values in student")
     public void testStudentWithNullValues() {
-        Student student = new Student(null, null, null, null);
+        Student student = new Student(null, null, null, null, null, null, null, null);
 
         assertNull(student.getId());
         assertNull(student.getName());
@@ -59,8 +59,8 @@ public class StudentTest {
     @Test
     @DisplayName("Should support data equality")
     public void testStudentEquality() {
-        Student student1 = new Student(1L, "John Doe", "S001", "john@example.com");
-        Student student2 = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student1 = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
+        Student student2 = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
 
         assertEquals(student1, student2);
     }
@@ -68,8 +68,8 @@ public class StudentTest {
     @Test
     @DisplayName("Should support data inequality")
     public void testStudentInequality() {
-        Student student1 = new Student(1L, "John Doe", "S001", "john@example.com");
-        Student student2 = new Student(2L, "Jane Smith", "S002", "jane@example.com");
+        Student student1 = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
+        Student student2 = new Student(2L, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null);
 
         assertNotEquals(student1, student2);
     }
@@ -77,7 +77,7 @@ public class StudentTest {
     @Test
     @DisplayName("Should support toString method")
     public void testStudentToString() {
-        Student student = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         String result = student.toString();
 
         assertNotNull(result);
@@ -87,8 +87,8 @@ public class StudentTest {
     @Test
     @DisplayName("Should support hash code")
     public void testStudentHashCode() {
-        Student student1 = new Student(1L, "John Doe", "S001", "john@example.com");
-        Student student2 = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student1 = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
+        Student student2 = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
 
         assertEquals(student1.hashCode(), student2.hashCode());
     }

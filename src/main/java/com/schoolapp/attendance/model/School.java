@@ -10,27 +10,24 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student {
+public class School {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String name;
-
-    @Column(unique = true)
-    private String rollNumber;
-
-    private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "class_section_id")
-    private ClassSection classSection;
-
-    private String phoneNumber;
 
     private String address;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Attendance> attendanceRecords;
+    private String phoneNumber;
+
+    private String email;
+
+    private String principal;
+
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SchoolClass> classes;
 }
+

@@ -13,7 +13,7 @@ public class AttendanceTest {
     @Test
     @DisplayName("Should create attendance with all fields")
     public void testAttendanceCreationWithAllFields() {
-        Student student = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         LocalDate date = LocalDate.of(2025, 11, 30);
         Attendance attendance = new Attendance(1L, student, date, Attendance.Status.PRESENT);
 
@@ -38,7 +38,7 @@ public class AttendanceTest {
     @DisplayName("Should set and get attendance properties")
     public void testAttendanceSettersAndGetters() {
         Attendance attendance = new Attendance();
-        Student student = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         LocalDate date = LocalDate.of(2025, 11, 30);
 
         attendance.setId(2L);
@@ -85,7 +85,7 @@ public class AttendanceTest {
     @Test
     @DisplayName("Should support data equality")
     public void testAttendanceEquality() {
-        Student student = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         LocalDate date = LocalDate.of(2025, 11, 30);
         Attendance attendance1 = new Attendance(1L, student, date, Attendance.Status.PRESENT);
         Attendance attendance2 = new Attendance(1L, student, date, Attendance.Status.PRESENT);
@@ -96,7 +96,7 @@ public class AttendanceTest {
     @Test
     @DisplayName("Should support data inequality")
     public void testAttendanceInequality() {
-        Student student = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         LocalDate date = LocalDate.of(2025, 11, 30);
         Attendance attendance1 = new Attendance(1L, student, date, Attendance.Status.PRESENT);
         Attendance attendance2 = new Attendance(2L, student, date, Attendance.Status.ABSENT);
@@ -107,7 +107,7 @@ public class AttendanceTest {
     @Test
     @DisplayName("Should support toString method")
     public void testAttendanceToString() {
-        Student student = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         LocalDate date = LocalDate.of(2025, 11, 30);
         Attendance attendance = new Attendance(1L, student, date, Attendance.Status.PRESENT);
         String result = attendance.toString();
@@ -119,7 +119,7 @@ public class AttendanceTest {
     @Test
     @DisplayName("Should support hash code")
     public void testAttendanceHashCode() {
-        Student student = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         LocalDate date = LocalDate.of(2025, 11, 30);
         Attendance attendance1 = new Attendance(1L, student, date, Attendance.Status.PRESENT);
         Attendance attendance2 = new Attendance(1L, student, date, Attendance.Status.PRESENT);
@@ -140,7 +140,7 @@ public class AttendanceTest {
     @Test
     @DisplayName("Should handle different dates")
     public void testAttendanceWithDifferentDates() {
-        Student student = new Student(1L, "John Doe", "S001", "john@example.com");
+        Student student = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         LocalDate date1 = LocalDate.of(2025, 11, 29);
         LocalDate date2 = LocalDate.of(2025, 11, 30);
 

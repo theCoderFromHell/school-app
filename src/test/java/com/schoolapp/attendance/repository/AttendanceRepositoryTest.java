@@ -29,7 +29,7 @@ public class AttendanceRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        testStudent = new Student(null, "John Doe", "S001", "john@example.com");
+        testStudent = new Student(null, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
         testStudent = studentRepository.save(testStudent);
         testDate = LocalDate.of(2025, 11, 30);
     }
@@ -62,7 +62,7 @@ public class AttendanceRepositoryTest {
     @DisplayName("Should find attendance by date")
     void testFindByDate() {
         Attendance attendance1 = new Attendance(null, testStudent, testDate, Attendance.Status.PRESENT);
-        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com");
+        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null);
         student2 = studentRepository.save(student2);
         Attendance attendance2 = new Attendance(null, student2, testDate, Attendance.Status.ABSENT);
         attendanceRepository.save(attendance1);
@@ -88,7 +88,7 @@ public class AttendanceRepositoryTest {
     @Test
     @DisplayName("Should return empty list when no attendance found by student")
     void testFindByStudentEmpty() {
-        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com");
+        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null);
         student2 = studentRepository.save(student2);
 
         List<Attendance> result = attendanceRepository.findByStudent(student2);
@@ -157,8 +157,8 @@ public class AttendanceRepositoryTest {
     @Test
     @DisplayName("Should handle multiple attendance records for same date different students")
     void testMultipleAttendanceDifferentStudents() {
-        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com");
-        Student student3 = new Student(null, "Bob Johnson", "S003", "bob@example.com");
+        Student student2 = new Student(null, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null);
+        Student student3 = new Student(null, "Bob Johnson", "S003", "bob@example.com", null, "5555555555", "789 Elm St", null);
         student2 = studentRepository.save(student2);
         student3 = studentRepository.save(student3);
 

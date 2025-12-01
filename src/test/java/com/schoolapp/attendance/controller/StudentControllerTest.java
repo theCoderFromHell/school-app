@@ -40,7 +40,7 @@ public class StudentControllerTest {
     @BeforeEach
     void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(studentController).build();
-        testStudent = new Student(1L, "John Doe", "S001", "john@example.com");
+        testStudent = new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null);
     }
 
     @Test
@@ -61,8 +61,8 @@ public class StudentControllerTest {
     @DisplayName("Should get all students via GET request")
     void testGetAllStudents() throws Exception {
         List<Student> students = Arrays.asList(
-                new Student(1L, "John Doe", "S001", "john@example.com"),
-                new Student(2L, "Jane Smith", "S002", "jane@example.com")
+                new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null),
+                new Student(2L, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null)
         );
         when(studentService.getAllStudents()).thenReturn(students);
 
@@ -88,7 +88,7 @@ public class StudentControllerTest {
     @Test
     @DisplayName("Should add student with minimal fields")
     void testAddStudentMinimalFields() throws Exception {
-        Student minimalStudent = new Student(1L, "Test", "S999", null);
+        Student minimalStudent = new Student(1L, "Test", "S999", null, null, null, null, null);
         when(studentService.addStudent(any(Student.class))).thenReturn(minimalStudent);
 
         mockMvc.perform(post("/api/students")
@@ -123,9 +123,9 @@ public class StudentControllerTest {
     @DisplayName("Should handle multiple students with different emails")
     void testGetAllStudentsMultiple() throws Exception {
         List<Student> students = Arrays.asList(
-                new Student(1L, "John Doe", "S001", "john@example.com"),
-                new Student(2L, "Jane Smith", "S002", "jane@example.com"),
-                new Student(3L, "Bob Johnson", "S003", "bob@example.com")
+                new Student(1L, "John Doe", "S001", "john@example.com", null, "1234567890", "123 Main St", null),
+                new Student(2L, "Jane Smith", "S002", "jane@example.com", null, "9876543210", "456 Oak St", null),
+                new Student(3L, "Bob Johnson", "S003", "bob@example.com", null, "5555555555", "789 Elm St", null)
         );
         when(studentService.getAllStudents()).thenReturn(students);
 
