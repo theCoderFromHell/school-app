@@ -23,7 +23,9 @@ public class SchoolClass {
     @JoinColumn(name = "school_id", nullable = false)
     private School school;
 
-    private String classTeacher;
+    @ManyToOne
+    @JoinColumn(name = "class_teacher_id")
+    private Teacher classTeacher;
 
     private Integer capacity;
 

@@ -23,7 +23,9 @@ public class ClassSection {
     @JoinColumn(name = "school_class_id", nullable = false)
     private SchoolClass schoolClass;
 
-    private String sectionTeacher;
+    @ManyToOne
+    @JoinColumn(name = "section_teacher_id")
+    private Teacher sectionTeacher;
 
     private Integer strength;
 
