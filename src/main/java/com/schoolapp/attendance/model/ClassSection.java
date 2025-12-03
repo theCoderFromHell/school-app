@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 @Entity
@@ -23,11 +24,14 @@ public class ClassSection {
     @JoinColumn(name = "school_class_id", nullable = false)
     private SchoolClass schoolClass;
 
-    private String sectionTeacher;
+    @ManyToOne
+    @JoinColumn(name = "section_teacher_id")
+    private Teacher sectionTeacher;
 
     private Integer strength;
 
     @OneToMany(mappedBy = "classSection", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Student> students;
 }
 
