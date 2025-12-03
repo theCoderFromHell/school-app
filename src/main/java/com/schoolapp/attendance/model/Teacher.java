@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 @Entity
@@ -36,9 +37,11 @@ public class Teacher {
     private School school;
 
     @OneToMany(mappedBy = "classTeacher", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<SchoolClass> classesTeaching;
 
     @OneToMany(mappedBy = "sectionTeacher", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ClassSection> sectionsTeaching;
 }
 

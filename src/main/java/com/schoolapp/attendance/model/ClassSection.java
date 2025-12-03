@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,7 @@ public class ClassSection {
     private Integer strength;
 
     @OneToMany(mappedBy = "classSection", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Student> students;
 }
 
