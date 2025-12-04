@@ -6,11 +6,13 @@ import com.schoolapp.attendance.repository.AttendanceRepository;
 import com.schoolapp.attendance.repository.StudentRepository;
 import com.schoolapp.attendance.service.AttendanceService;
 import com.schoolapp.attendance.service.StudentService;
+import com.schoolapp.attendance.config.TestSecurityConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Import(TestSecurityConfig.class)
 @DisplayName("Attendance Application Integration Tests")
 public class AttendanceApplicationIntegrationTest {
 
