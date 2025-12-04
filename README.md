@@ -1,32 +1,36 @@
 # 🎓 School App - Student Attendance Management System
 
-A comprehensive Spring Boot application for managing student attendance with a RESTful API.
+A comprehensive Spring Boot application for managing school attendance with a RESTful API.
 
 ## 📋 Features
 
 - **Student Management**: Add and retrieve student information
 - **Attendance Tracking**: Mark and track student attendance with multiple status options (Present, Absent, Late)
+- **Teacher CRUD Operations**: Complete teacher management system
+- **School & Class Management**: Manage schools, classes, and sections
+- **Authentication**: Spring Security with JWT and OAuth2 support
 - **Date-based Queries**: Retrieve attendance records by date or student
-- **Automatic Updates**: Update existing attendance records for the same student and date
-- **H2 In-Memory Database**: Quick setup with embedded database
-- **Comprehensive Testing**: 100 test cases with 100% pass rate
+- **MySQL Database**: Production-ready database configuration
+- **Comprehensive Testing**: Extensive test coverage with JUnit 5
 
 ## 🛠️ Tech Stack
 
-- **Java 17**
+- **Java 21**
 - **Spring Boot 3.2.0**
 - **Spring Data JPA**
-- **H2 Database**
+- **Spring Security** with OAuth2
+- **MySQL** (Production) / **H2** (Tests)
+- **JWT** (Authentication)
 - **Lombok**
-- **Gradle**
+- **Maven**
 - **JUnit 5 & Mockito**
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Java 17 or higher
-- Gradle (or use the included Gradle wrapper)
+- Java 21 (JDK 21)
+- Maven 3.9+
 
 ### Installation
 
@@ -38,15 +42,43 @@ cd school-app
 
 2. Build the project:
 ```bash
-./gradlew clean build
+# Using system Maven (recommended)
+mvn clean install
+
+# Or use the helper script (sets Java 21 automatically)
+./mvnw-java21.sh clean install
 ```
 
 3. Run the application:
 ```bash
-./gradlew bootRun
+# Using system Maven
+mvn spring-boot:run
+
+# Or use the helper script
+./mvnw-java21.sh spring-boot:run
 ```
 
 The application will start on `http://localhost:8080`
+
+## 📚 Documentation
+
+Detailed documentation is available in `docs/incremental/`:
+
+### Quick References:
+- **[BUILD.md](docs/incremental/BUILD.md)** - Build instructions and troubleshooting
+- **[COMPLETION_SUMMARY.md](docs/incremental/COMPLETION_SUMMARY.md)** - Project status and overview
+- **[MAVEN_CONVERSION.md](docs/incremental/MAVEN_CONVERSION.md)** - Gradle to Maven conversion details
+- **[JAVA_VERSION_FIX.md](docs/incremental/JAVA_VERSION_FIX.md)** - Java version configuration guide
+
+### API Documentation:
+- **[TEACHER_API_QUICK_REFERENCE.md](docs/incremental/TEACHER_API_QUICK_REFERENCE.md)** - Teacher API endpoints
+- **[TEST_SUITE_DOCUMENTATION.md](docs/incremental/TEST_SUITE_DOCUMENTATION.md)** - Test coverage details
+
+## ⚙️ Configuration
+
+Database configuration is in `src/main/resources/application.properties`:
+- **Production**: MySQL database
+- **Tests**: H2 in-memory database (automatic)
 
 ## 📡 API Endpoints
 

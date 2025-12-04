@@ -1,0 +1,13 @@
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/service/TeacherServiceTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/repository/StudentRepositoryTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/model/AttendanceTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/controller/AttendanceControllerTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/controller/TeacherControllerTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/repository/TeacherRepositoryTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/model/StudentTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/AttendanceApplicationIntegrationTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/config/TestSecurityConfig.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/controller/StudentControllerTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/service/StudentServiceTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/repository/AttendanceRepositoryTest.java
+/Users/theCoderFromHell/Development/projects/school-app/src/test/java/com/schoolapp/attendance/service/AttendanceServiceTest.java
