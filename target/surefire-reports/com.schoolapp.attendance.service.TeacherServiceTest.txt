@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.schoolapp.attendance.service.TeacherServiceTest
--------------------------------------------------------------------------------
-Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.322 s - in com.schoolapp.attendance.service.TeacherServiceTest
