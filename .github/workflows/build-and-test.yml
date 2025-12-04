@@ -24,20 +24,20 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        cache: gradle
+        cache: maven
 
-    - name: Make gradlew executable
-      run: chmod +x ./gradlew
+    - name: Make mvnw executable
+      run: chmod +x ./mvnw
 
-    - name: Build with Gradle
-      run: ./gradlew clean build --info
+    - name: Build with Maven
+      run: ./mvnw clean install --batch-mode
 
     - name: Upload test results
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: test-results
-        path: build/test-results/
+        path: target/surefire-reports/
         retention-days: 30
 
     - name: Upload coverage reports
@@ -45,7 +45,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-reports
-        path: build/reports/tests/
+        path: target/surefire-reports/
         retention-days: 30
 
     - name: Test Report
@@ -53,7 +53,7 @@ jobs:
       uses: dorny/test-reporter@v1
       with:
         name: JUnit Test Results
-        path: 'build/test-results/test/TEST-*.xml'
+        path: 'target/surefire-reports/TEST-*.xml'
         reporter: 'java-junit'
         fail-on-error: false
 

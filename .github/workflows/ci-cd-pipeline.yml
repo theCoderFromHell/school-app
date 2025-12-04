@@ -34,29 +34,29 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        cache: gradle
+        cache: maven
 
-    - name: Make gradlew executable
-      run: chmod +x ./gradlew
+    - name: Make mvnw executable
+      run: chmod +x ./mvnw
 
-    - name: Validate Gradle wrapper
-      uses: gradle/wrapper-validation-action@v1
+    - name: Validate Maven wrapper
+      run: ./mvnw --version
 
     - name: Compile
-      run: ./gradlew clean compileJava compileTestJava --info
+      run: ./mvnw clean compile test-compile --batch-mode
 
     - name: Run Tests
-      run: ./gradlew test --info
+      run: ./mvnw test --batch-mode
 
     - name: Build JAR
-      run: ./gradlew build -x test --info
+      run: ./mvnw package -DskipTests --batch-mode
 
     - name: Upload Test Results
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: test-results
-        path: build/test-results/
+        path: target/surefire-reports/
         retention-days: 30
 
     - name: Upload Test Reports
@@ -64,14 +64,14 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-reports
-        path: build/reports/tests/
+        path: target/surefire-reports/
         retention-days: 30
 
     - name: Publish Test Results
       if: always()
       uses: EnricoMi/publish-unit-test-result-action@v2
       with:
-        files: 'build/test-results/test/TEST-*.xml'
+        files: 'target/surefire-reports/TEST-*.xml'
         check_name: 'JUnit Test Results'
 
     - name: Generate Test Report
@@ -79,7 +79,7 @@ jobs:
       uses: dorny/test-reporter@v1
       with:
         name: JUnit Tests
-        path: 'build/test-results/test/TEST-*.xml'
+        path: 'target/surefire-reports/TEST-*.xml'
         reporter: 'java-junit'
         fail-on-error: true
 
@@ -87,14 +87,14 @@ jobs:
       if: always()
       run: |
         echo "Test Results Summary:"
-        find build/test-results/test -name "TEST-*.xml" -exec sh -c 'echo "File: $1"; grep -o "tests=\"[^\"]*\"" "$1"' _ {} \;
+        find target/surefire-reports -name "TEST-*.xml" -exec sh -c 'echo "File: $1"; grep -o "tests=\"[^\"]*\"" "$1"' _ {} \;
 
     - name: Upload Build Logs
       if: failure()
       uses: actions/upload-artifact@v4
       with:
         name: build-logs
-        path: build/
+        path: target/
         retention-days: 7
 
     - name: Set build status in PR
