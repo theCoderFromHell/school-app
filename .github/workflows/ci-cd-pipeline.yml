@@ -36,20 +36,17 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Make mvnw executable
-      run: chmod +x ./mvnw
-
-    - name: Validate Maven wrapper
-      run: ./mvnw --version
+    - name: Validate Maven installation
+      run: mvn --version
 
     - name: Compile
-      run: ./mvnw clean compile test-compile --batch-mode
+      run: mvn clean compile test-compile --batch-mode
 
     - name: Run Tests
-      run: ./mvnw test --batch-mode
+      run: mvn test --batch-mode
 
     - name: Build JAR
-      run: ./mvnw package -DskipTests --batch-mode
+      run: mvn package -DskipTests --batch-mode
 
     - name: Upload Test Results
       if: always()
